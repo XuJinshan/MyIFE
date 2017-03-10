@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson-1-2</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <label>请输入北京今天空气质量：<input id="aqi-input" type="text"></label>
+  <button id="button">确认填写</button>
+
+  <div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
+
+<script type="text/javascript">
+
+(function() {
+  /*    
+  在注释下方写下代码
+  给按钮button绑定一个点击事件
+  在事件处理函数中
+  获取aqi-input输入的值，并显示在aqi-display中
+  */
+    var inp = document.getElementById("aqi-input");
+    var oup = document.getElementById("aqi-display");
+    var but = document.getElementById("button");
+   
+   but.onclick = function() {    //进行鼠标事件绑定      
+        oup.innerHTML = inp.value; 
+     // oup.innerText = inp.value;  以上两种的差别，在于HTML与Text...
+    };     
+       
+
+/*    方式2：
+        but.onclick(function() {    //这种形式是错的。！ ？
+        
+            oup.innerHTML = inp.value;
+    }); 
+    
+    以上可以更改为：
+        but.addEventListener("click",function() {
+            oup.innerHTML = inp.value;
+    });
+*/
+
+    
+/*    方式3：
+        but.onclick = function() {    //进行鼠标事件绑定      
+            oup.innerHTML("inp.value");
+     
+    };               
+*/
+
+
+
+
+})();
+
+</script>
+
+
+
+
+  </body>
+</html>
