@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IFE-Task-2</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+
+(function () {
+
+  /*
+  在注释下方编写代码
+  遍历读取aqiData中各个城市的数据
+  将空气质量指数大于60的城市显示到aqi-list的列表中
+  */
+    var arrAfterFilter = [];
+    function arrFilter(arr){
+    for (var i=0;i<arr.length;i++){
+        if(arr[i][1] > 60){
+            arrAfterFilter.push(arr[i]);
+        }
+    }
+    };
+    arrFilter(aqiData);
+    
+    //通过添加子节点和innerHTML进行设置。
+    
+    var 
+        list = document.getElementById("aqi-list"),
+        son1 = document.createElement("li-1"),
+        son2 = document.createElement("li-2"),
+        son3 = document.createElement("li-3");
+        
+        son1.innerHTML = '<li>'+'第一名：'+arrAfterFilter[0]+'</li>';
+        son2.innerHTML = '<li>'+'第二名：'+arrAfterFilter[1]+'</li>';
+        son3.innerHTML = '<li>'+'第三名：'+arrAfterFilter[2]+'</li>';
+        
+        list.appendChild(son1);
+        list.appendChild(son2);
+        list.appendChild(son3);
+
+    
+
+
+
+
+
+
+
+})();
+
+</script>
+  </body>
+</html>
