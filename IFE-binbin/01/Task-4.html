@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task-4</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  <style>
+    *{margin: 0; padding: 0;}
+    #dataInput{
+        margin-left: 200px;
+        margin-top: 100px;
+        height: 35px;
+        width: 200px;
+    } 
+    ul{
+        margin-left: 200px;        
+    }  
+    li{
+        display: inline-block;  /*设置行内块级元素 */
+        background-color: #c00;                      
+        padding: 8px;
+        margin-right: 5px;
+        margin-top: 5px;
+        color: #fff;  
+        cursor: pointer;                       
+    }
+  
+  
+  </style>
+  </head>
+  
+  <body>
+    <!-- input 标签，进行提示操作并进行初步数据判断 -->
+    <input id="dataInput" name="Input" type="text" pattern="[0-9]*" placeholder="请输入一个数！"/>
+    
+    <button type="button" id="leftIn">左侧入</button>
+    <button type="button" id="rightIn">右侧入</button>
+    <button type="button" id="leftOut">左侧出</button>
+    <button type="button" id="rightOut">右侧出</button>
+    
+    <br/>
+    <ul id="dataShowBox">
+    
+    </ul>
+    
+    <script>
+        
+        (function() {
+            
+                //获取节点信息
+            var dataInput = document.getElementById("dataInput"),                                
+                btn1 = document.getElementById("leftIn"),
+                btn2 = document.getElementById("rightIn"),
+                btn3 = document.getElementById("leftOut"),
+                btn4 = document.getElementById("rightOut"),                
+                dataShowBox = document.getElementById("dataShowBox");
+                
+            var list = dataShowBox.children;
+                
+                              
+                //判断输入字符
+                function checkNumber() {
+                    if (isNaN(dataInput.value)) {
+                        alert("请在数字框中输入数字！");
+                        return false;
+                    }
+                    else {return true;}
+                }
+                checkNumber();
+                
+                
+                //右边输入
+                btn2.onclick = function() {
+                    if(checkNumber()) {
+                        dataSpan = document.createElement("li");
+                        dataSpan.innerHTML = dataInput.value;                                         
+                        dataShowBox.appendChild(dataSpan); 
+                        dataSpan.onclick = delet;  //此处过程是怎么的？                     
+                    }
+                };
+                //左边输入
+                btn1.onclick = function() {
+                    if(checkNumber()) {
+                        dataSpan = document.createElement("li");
+                        dataSpan.innerHTML = dataInput.value;                      
+                        dataShowBox.insertBefore(dataSpan,dataShowBox.firstChild);
+                        dataSpan.onclick = delet;  //此处过程是怎么的？                      
+                    }
+                };
+                //左边输出
+                btn3.onclick = function() {
+                    if(checkNumber()) {
+                        confirm("要删除的数字为："+dataShowBox.children[0].innerHTML);
+                        dataShowBox.removeChild(dataShowBox.firstChild);                       
+                    }
+                };
+                //右边输出
+                 btn4.onclick = function() {
+                    if(checkNumber()) {
+                        confirm("要删除的数字为："+dataShowBox.children[(dataShowBox.children.length)-1].innerHTML);
+                        dataShowBox.removeChild(dataShowBox.lastChild);                       
+                    }
+                };
+                
+                
+                //为每一个数字绑定删除事件
+                function delet() {
+                    this.parentNode.removeChild(this);
+                }
+                //将每个子节点绑定删除函数
+                for(var i=0;i<list.length;i++) {                
+                    list[i].onclick = delet;                   
+                }
+        
+        
+        
+        })();
+    
+    
+    
+    
+    </script>
+  </body>
+</html>
